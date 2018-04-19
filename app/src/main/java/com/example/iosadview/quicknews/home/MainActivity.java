@@ -5,7 +5,9 @@ import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.util.Log;
 
+import com.example.iosadview.quicknews.Interface.PostItemClickListener;
 import com.example.iosadview.quicknews.R;
+import com.example.iosadview.quicknews.Utils.AppUtis;
 import com.example.iosadview.quicknews.model.BaseResponse;
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceActivity;
 
@@ -13,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse, Home.View, Home.Presenter>
-        implements Home.View {
+        implements Home.View, PostItemClickListener {
 
     private VerticalViewPager verticalViewPager;
     private VerticlePagerAdapter verticlePagerAdapter;
@@ -25,7 +27,7 @@ public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse,
         setContentView(R.layout.activity_main);
         mTotoalList = new ArrayList<>();
         verticalViewPager = findViewById(R.id.verticleViewPager);
-        verticlePagerAdapter = new VerticlePagerAdapter(this, mTotoalList);
+        verticlePagerAdapter = new VerticlePagerAdapter(this, mTotoalList, this);
         loadData(false);
     }
 
@@ -60,5 +62,11 @@ public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse,
         Log.e("TAG", "listSize==" + mTotoalList.size());
         verticlePagerAdapter.notifyDataSetChanged();
         verticalViewPager.setAdapter(verticlePagerAdapter);
+    }
+
+    @Override
+    public void postClick(int position, String url) {
+        Log.e("TAG", "checkingTheClick===" + position + "url====" + url);
+        AppUtis.creatorCustomTabs(this, url);
     }
 }

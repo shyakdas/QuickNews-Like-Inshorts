@@ -9,19 +9,23 @@ import com.example.iosadview.quicknews.R;
 import com.example.iosadview.quicknews.model.BaseResponse;
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse, Home.View, Home.Presenter>
         implements Home.View {
 
     private VerticalViewPager verticalViewPager;
     private VerticlePagerAdapter verticlePagerAdapter;
+    private ArrayList<BaseResponse.Article> mTotoalList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mTotoalList = new ArrayList<>();
         verticalViewPager = findViewById(R.id.verticleViewPager);
-        verticlePagerAdapter = new VerticlePagerAdapter(this);
-        verticalViewPager.setAdapter(verticlePagerAdapter);
+        verticlePagerAdapter = new VerticlePagerAdapter(this, mTotoalList);
         loadData(false);
     }
 
@@ -38,12 +42,23 @@ public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse,
 
     @Override
     public void setData(BaseResponse data) {
-        Log.e("TAG", "check===" + data.getArticles().get(1).getUrlToImage());
-        verticlePagerAdapter.addAll(data.getArticles());
+        Log.e("TAG", "setDataCheck==" + data.getArticles().get(2).getUrlToImage());
+        addAll(data.getArticles());
     }
 
     @Override
     public void loadData(boolean pullToRefresh) {
-        presenter.fetchChannelData();
+        presenter.fetchBuisnessCategorisData();
+        presenter.fetchBitCoinData();
+        presenter.getTopHeadLine();
+        presenter.getAppleDataNews();
+        presenter.getJournalData();
+    }
+
+    public void addAll(List<BaseResponse.Article> categories) {
+        this.mTotoalList.addAll(categories);
+        Log.e("TAG", "listSize==" + mTotoalList.size());
+        verticlePagerAdapter.notifyDataSetChanged();
+        verticalViewPager.setAdapter(verticlePagerAdapter);
     }
 }

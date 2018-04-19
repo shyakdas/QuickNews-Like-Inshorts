@@ -12,6 +12,14 @@ public interface Home {
 
     interface Presenter extends MvpPresenter<Home.View> {
 
-        void fetchChannelData();
+        void fetchBuisnessCategorisData();
+
+        void fetchBitCoinData();
+
+        void getTopHeadLine();
+
+        void getAppleDataNews();
+
+        void getJournalData();
     }
 }

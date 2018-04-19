@@ -2,7 +2,6 @@ package com.example.iosadview.quicknews.home;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,26 +14,25 @@ import com.example.iosadview.quicknews.R;
 import com.example.iosadview.quicknews.model.BaseResponse;
 
 import java.util.ArrayList;
-import java.util.List;
 
 class VerticlePagerAdapter extends PagerAdapter {
 
     private Context mContext;
     private LayoutInflater mLayoutInflater;
-    private List<BaseResponse.Article> mList;
+    private ArrayList<BaseResponse.Article> mList;
 
-    public VerticlePagerAdapter(Context context) {
+    public VerticlePagerAdapter(Context context, ArrayList<BaseResponse.Article> mTotalList) {
         mContext = context;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mList = new ArrayList<>();
+        mList = mTotalList;
     }
 
-    public void addAll(List<BaseResponse.Article> categories) {
-        this.mList.clear();
-        this.mList.addAll(categories);
-        Log.e("TAG", "listSize==" + mList.size());
-        notifyDataSetChanged();
-    }
+//    public void addAll(List<BaseResponse.Article> categories) {
+//        this.mList.clear();
+//        this.mList.addAll(categories);
+//        Log.e("TAG", "listSize==" + mList.size());
+//        notifyDataSetChanged();
+//    }
 
     @Override
     public int getCount() {
@@ -63,4 +61,3 @@ class VerticlePagerAdapter extends PagerAdapter {
         container.removeView((LinearLayout) object);
     }
 }
-

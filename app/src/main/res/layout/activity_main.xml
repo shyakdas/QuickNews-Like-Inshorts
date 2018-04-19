@@ -46,8 +46,8 @@
         android:layout_marginTop="59dp"
         app:layout_constraintTop_toTopOf="@id/constraintLayout">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/channelRC"
+        <com.example.iosadview.quicknews.home.VerticalViewPager
+            android:id="@+id/verticleViewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

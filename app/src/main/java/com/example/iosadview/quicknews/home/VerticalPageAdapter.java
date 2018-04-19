@@ -20,19 +20,14 @@ class VerticlePagerAdapter extends PagerAdapter {
     private Context mContext;
     private LayoutInflater mLayoutInflater;
     private ArrayList<BaseResponse.Article> mList;
+    private TextView label, title;
+    private ImageView imageView;
 
     public VerticlePagerAdapter(Context context, ArrayList<BaseResponse.Article> mTotalList) {
         mContext = context;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mList = mTotalList;
     }
-
-//    public void addAll(List<BaseResponse.Article> categories) {
-//        this.mList.clear();
-//        this.mList.addAll(categories);
-//        Log.e("TAG", "listSize==" + mList.size());
-//        notifyDataSetChanged();
-//    }
 
     @Override
     public int getCount() {
@@ -47,12 +42,13 @@ class VerticlePagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         View itemView = mLayoutInflater.inflate(R.layout.item_channel, container, false);
-        TextView label = itemView.findViewById(R.id.textView);
-        ImageView imageView = itemView.findViewById(R.id.imageView);
+        label = itemView.findViewById(R.id.textView);
+        imageView = itemView.findViewById(R.id.imageView);
+        title = itemView.findViewById(R.id.title);
         label.setText(mList.get(position).getDescription());
         Glide.with(mContext).load(mList.get(position).getUrlToImage()).centerCrop().into(imageView);
+        title.setText(mList.get(position).getTitle());
         container.addView(itemView);
-
         return itemView;
     }
 

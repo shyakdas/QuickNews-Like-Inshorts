@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">QuickNews</string>
+    <string name="error_view">Error View</string>
+    <string name="search">Search</string>
+    <string name="channels">CHANNELS</string>
+    <string name="tamil">Tamil</string>
 </resources>

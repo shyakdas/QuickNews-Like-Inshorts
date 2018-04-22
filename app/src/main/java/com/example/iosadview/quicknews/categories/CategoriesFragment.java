@@ -19,7 +19,7 @@ import com.hannesdorfmann.mosby3.mvp.lce.MvpLceFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChannelList extends MvpLceFragment<RelativeLayout, BaseResponse, Channel.View, Channel.Presenter>
+public class CategoriesFragment extends MvpLceFragment<RelativeLayout, BaseResponse, Channel.View, Channel.Presenter>
         implements Channel.View {
 
     private RecyclerView mRecylerview;
@@ -35,6 +35,10 @@ public class ChannelList extends MvpLceFragment<RelativeLayout, BaseResponse, Ch
         mList = new ArrayList<>();
         loadData(false);
         return view;
+    }
+
+    public static CategoriesFragment newInstance() {
+        return new CategoriesFragment();
     }
 
     @Override

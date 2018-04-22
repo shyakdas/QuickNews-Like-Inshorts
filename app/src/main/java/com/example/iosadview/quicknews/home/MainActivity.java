@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -14,11 +15,14 @@ import android.view.MenuItem;
 import com.example.iosadview.quicknews.Interface.PostItemClickListener;
 import com.example.iosadview.quicknews.R;
 import com.example.iosadview.quicknews.Utils.AppUtis;
+import com.example.iosadview.quicknews.categories.CategoriesFragment;
 import com.example.iosadview.quicknews.model.BaseResponse;
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.iosadview.quicknews.Utils.Constant.TAG_MASTER_FRAGMENT;
 
 public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse, Home.View, Home.Presenter>
         implements Home.View, PostItemClickListener {
@@ -35,8 +39,7 @@ public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse,
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mDrawerLayout = findViewById(R.id.drawer_layout);
-        if (mDrawerLayout != null) { // <------ add if
-            // setup drawer view
+        if (mDrawerLayout != null) {
             NavigationView navigationView = findViewById(R.id.master_fragment_container);
             navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -45,13 +48,19 @@ public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse,
                 }
             });
 
-            // setup menu icon
             final ActionBar actionBar = getSupportActionBar();
             if (actionBar != null) {
                 actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
                 actionBar.setDisplayHomeAsUpEnabled(true);
             }
         }
+
+        CategoriesFragment categoriesFragment = CategoriesFragment.newInstance();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .add(R.id.master_fragment_container, categoriesFragment, TAG_MASTER_FRAGMENT)
+                .commit();
+
         mTotoalList = new ArrayList<>();
         verticalViewPager = findViewById(R.id.verticleViewPager);
         verticlePagerAdapter = new VerticlePagerAdapter(this, mTotoalList, this);

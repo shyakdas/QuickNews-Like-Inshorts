@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.example.iosadview.quicknews.Utils.Contant;
+import com.example.iosadview.quicknews.Utils.Constant;
 import com.example.iosadview.quicknews.model.BaseResponse;
 import com.example.iosadview.quicknews.network.APIUtils;
 import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter;
@@ -27,9 +27,9 @@ public class HomePresenter extends MvpBasePresenter<Home.View> implements Home.P
     @Override
     public void fetchBuisnessCategorisData() {
         HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put(Contant.COUNTRY, "us");
-        hashMap.put(Contant.CATEGORY, "business");
-        hashMap.put(Contant.API_KEY, "a2b79ad65ea54c8387a71724bd888b17");
+        hashMap.put(Constant.COUNTRY, "us");
+        hashMap.put(Constant.CATEGORY, "business");
+        hashMap.put(Constant.API_KEY, "a2b79ad65ea54c8387a71724bd888b17");
         APIUtils.getAPIService().getNewsChannels(hashMap).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Response<BaseResponse>>() {
@@ -56,7 +56,7 @@ public class HomePresenter extends MvpBasePresenter<Home.View> implements Home.P
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("q", "bitcoin");
         hashMap.put("sortBy", "publishedAt");
-        hashMap.put(Contant.API_KEY, "a2b79ad65ea54c8387a71724bd888b17");
+        hashMap.put(Constant.API_KEY, "a2b79ad65ea54c8387a71724bd888b17");
         APIUtils.getAPIService().getEveryThing(hashMap).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Response<BaseResponse>>() {
@@ -82,7 +82,7 @@ public class HomePresenter extends MvpBasePresenter<Home.View> implements Home.P
     public void getTopHeadLine() {
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("sources", "techcrunch");
-        hashMap.put(Contant.API_KEY, "a2b79ad65ea54c8387a71724bd888b17");
+        hashMap.put(Constant.API_KEY, "a2b79ad65ea54c8387a71724bd888b17");
         APIUtils.getAPIService().getTopHeadLine(hashMap).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Response<BaseResponse>>() {
@@ -112,7 +112,7 @@ public class HomePresenter extends MvpBasePresenter<Home.View> implements Home.P
         hashMap.put("from", "2018-04-18");
         hashMap.put("to", "2018-04-18");
         hashMap.put("sortBy", "popularity");
-        hashMap.put(Contant.API_KEY, "a2b79ad65ea54c8387a71724bd888b17");
+        hashMap.put(Constant.API_KEY, "a2b79ad65ea54c8387a71724bd888b17");
         APIUtils.getAPIService().getEveryThing(hashMap).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Response<BaseResponse>>() {
@@ -138,7 +138,7 @@ public class HomePresenter extends MvpBasePresenter<Home.View> implements Home.P
     public void getJournalData() {
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("domains", "wsj.com");
-        hashMap.put(Contant.API_KEY, "a2b79ad65ea54c8387a71724bd888b17");
+        hashMap.put(Constant.API_KEY, "a2b79ad65ea54c8387a71724bd888b17");
         APIUtils.getAPIService().getEveryThing(hashMap).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Response<BaseResponse>>() {

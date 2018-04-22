@@ -55,13 +55,10 @@
 
     </LinearLayout>
 
-    <include
-        android:id="@+id/left_drawer"
-        layout="@layout/fragment_categories"
-        android:layout_width="match_parent"
+    <android.support.design.widget.NavigationView
+        android:id="@+id/master_fragment_container"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:layout_marginLeft="-64dp"
-        android:orientation="vertical" />
+        android:layout_gravity="start" />
 
 </android.support.v4.widget.DrawerLayout>

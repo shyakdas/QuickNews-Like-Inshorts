@@ -45,7 +45,7 @@ class VerticlePagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
-        View itemView = mLayoutInflater.inflate(R.layout.item_channel, container, false);
+        View itemView = mLayoutInflater.inflate(R.layout.item_channel_news, container, false);
         label = itemView.findViewById(R.id.textView);
         imageView = itemView.findViewById(R.id.imageView);
         title = itemView.findViewById(R.id.title);

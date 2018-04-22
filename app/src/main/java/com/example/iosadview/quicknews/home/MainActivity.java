@@ -3,6 +3,7 @@ package com.example.iosadview.quicknews.home;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.example.iosadview.quicknews.Interface.PostItemClickListener;
@@ -25,6 +26,8 @@ public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         mTotoalList = new ArrayList<>();
         verticalViewPager = findViewById(R.id.verticleViewPager);
         verticlePagerAdapter = new VerticlePagerAdapter(this, mTotoalList, this);

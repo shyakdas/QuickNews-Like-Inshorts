@@ -25,4 +25,7 @@ class ArticleData {
     @SerializedName("publishedAt")
     @Expose
     var publishedAt: String? = null
+    @SerializedName("content")
+    @Expose
+    var content: String? = null
 }

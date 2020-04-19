@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.viewpager.widget.PagerAdapter
 import com.bumptech.glide.Glide
 import com.example.iosadview.quicknews.R
@@ -33,15 +33,16 @@ class VerticalPagerAdapter(var context: Context, var mTotalList: ArrayList<Artic
 
     override fun instantiateItem(container: ViewGroup, position: Int): View {
         val itemView = mLayoutInflater?.inflate(R.layout.item_channel_news, container, false)
-        itemView?.title?.text = mTotalList[position].description
-        Glide.with(context).load(mTotalList[position].urlToImage).centerCrop().into(itemView!!.imageView)
-        itemView.title?.text = mTotalList[position].title
+        itemView?.news_description?.text = mTotalList[position].description
+        itemView?.news_text?.text=mTotalList[position].content
+        Glide.with(context).load(mTotalList[position].urlToImage).centerCrop().into(itemView!!.news_image)
+        itemView.news_description?.text = mTotalList[position].title
         container.addView(itemView)
-        itemView.title?.setOnClickListener { listener.onClick(position, mTotalList[position].url!!) }
+        itemView.news_description?.setOnClickListener { listener.onClick(position, mTotalList[position].url!!) }
         return itemView
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-        container.removeView((`object`) as LinearLayout)
+        container.removeView((`object`) as ConstraintLayout)
     }
 }

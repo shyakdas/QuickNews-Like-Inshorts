@@ -3,19 +3,14 @@ package com.quicknews.home;
 import android.content.Context;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
-import com.quicknews.model.BaseResponse;
-import com.quicknews.network.APIUtils;
 import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter;
+import com.quicknews.network.APIUtils;
 import com.quicknews.utils.QuickNewsConstant;
 
 import java.util.HashMap;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Response;
 
 public class HomePresenter extends MvpBasePresenter<Home.View> implements Home.Presenter {
 
@@ -33,23 +28,10 @@ public class HomePresenter extends MvpBasePresenter<Home.View> implements Home.P
         hashMap.put(QuickNewsConstant.API_KEY, "a2b79ad65ea54c8387a71724bd888b17");
         APIUtils.getAPIService().getNewsChannels(hashMap).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Response<BaseResponse>>() {
-                    @Override
-                    public void accept(final Response<BaseResponse> channelResponse) throws Exception {
-                        Log.e("TAG", "channelResponse==" + channelResponse.body().getStatus());
-                        ifViewAttached(true, new ViewAction<Home.View>() {
-                            @Override
-                            public void run(@NonNull Home.View view) {
-                                view.setData(channelResponse.body());
-                            }
-                        });
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        Log.e("TAG", "channelThrowable==" + throwable.getMessage());
-                    }
-                });
+                .subscribe(channelResponse -> {
+                    Log.e("TAG", "channelResponse==" + channelResponse.body().getStatus());
+                    ifViewAttached(true, view -> view.setData(channelResponse.body()));
+                }, throwable -> Log.e("TAG", "channelThrowable==" + throwable.getMessage()));
     }
 
     @Override
@@ -60,23 +42,10 @@ public class HomePresenter extends MvpBasePresenter<Home.View> implements Home.P
         hashMap.put(QuickNewsConstant.API_KEY, "a2b79ad65ea54c8387a71724bd888b17");
         APIUtils.getAPIService().getEveryThing(hashMap).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Response<BaseResponse>>() {
-                    @Override
-                    public void accept(final Response<BaseResponse> bitCoinResponse) throws Exception {
-                        Log.e("TAG", "bitCoinResponse==" + bitCoinResponse.body().getStatus());
-                        ifViewAttached(true, new ViewAction<Home.View>() {
-                            @Override
-                            public void run(@NonNull Home.View view) {
-                                view.setData(bitCoinResponse.body());
-                            }
-                        });
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable bitCoinThrowable) throws Exception {
-                        Log.e("TAG", "channelThrowable==" + bitCoinThrowable.getMessage());
-                    }
-                });
+                .subscribe(bitCoinResponse -> {
+                    Log.e("TAG", "bitCoinResponse==" + bitCoinResponse.body().getStatus());
+                    ifViewAttached(true, view -> view.setData(bitCoinResponse.body()));
+                }, bitCoinThrowable -> Log.e("TAG", "channelThrowable==" + bitCoinThrowable.getMessage()));
     }
 
     @Override
@@ -86,24 +55,10 @@ public class HomePresenter extends MvpBasePresenter<Home.View> implements Home.P
         hashMap.put(QuickNewsConstant.API_KEY, "a2b79ad65ea54c8387a71724bd888b17");
         APIUtils.getAPIService().getTopHeadLine(hashMap).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Response<BaseResponse>>() {
-                    @Override
-                    public void accept(final Response<BaseResponse> topHeadlineResponse) throws Exception {
-                        Log.e("TAG", "topHeadlineResponse==" + topHeadlineResponse.body().getStatus());
-                        ifViewAttached(true, new ViewAction<Home.View>() {
-                            @Override
-                            public void run(@NonNull Home.View view) {
-                                view.setData(topHeadlineResponse.body());
-                            }
-                        });
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable topHeadlineThrowable) throws Exception {
-                        Log.e("TAG", "topHeadlineThrowable==" + topHeadlineThrowable.getMessage());
-
-                    }
-                });
+                .subscribe(topHeadlineResponse -> {
+                    Log.e("TAG", "topHeadlineResponse==" + topHeadlineResponse.body().getStatus());
+                    ifViewAttached(true, view -> view.setData(topHeadlineResponse.body()));
+                }, topHeadlineThrowable -> Log.e("TAG", "topHeadlineThrowable==" + topHeadlineThrowable.getMessage()));
     }
 
     @Override
@@ -116,23 +71,10 @@ public class HomePresenter extends MvpBasePresenter<Home.View> implements Home.P
         hashMap.put(QuickNewsConstant.API_KEY, "a2b79ad65ea54c8387a71724bd888b17");
         APIUtils.getAPIService().getEveryThing(hashMap).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Response<BaseResponse>>() {
-                    @Override
-                    public void accept(final Response<BaseResponse> appleNewsResponse) throws Exception {
-                        Log.e("TAG", "appleNewsResponse==" + appleNewsResponse.body().getStatus());
-                        ifViewAttached(true, new ViewAction<Home.View>() {
-                            @Override
-                            public void run(@NonNull Home.View view) {
-                                view.setData(appleNewsResponse.body());
-                            }
-                        });
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable appleNewsResponse) throws Exception {
-                        Log.e("TAG", "appleNewsResponse==" + appleNewsResponse.getMessage());
-                    }
-                });
+                .subscribe(appleNewsResponse -> {
+                    Log.e("TAG", "appleNewsResponse==" + appleNewsResponse.body().getStatus());
+                    ifViewAttached(true, view -> view.setData(appleNewsResponse.body()));
+                }, appleNewsResponse -> Log.e("TAG", "appleNewsResponse==" + appleNewsResponse.getMessage()));
     }
 
     @Override
@@ -142,22 +84,9 @@ public class HomePresenter extends MvpBasePresenter<Home.View> implements Home.P
         hashMap.put(QuickNewsConstant.API_KEY, "a2b79ad65ea54c8387a71724bd888b17");
         APIUtils.getAPIService().getEveryThing(hashMap).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Response<BaseResponse>>() {
-                    @Override
-                    public void accept(final Response<BaseResponse> journeyDataResponse) throws Exception {
-                        Log.e("TAG", "journeyDataResponse==" + journeyDataResponse.body().getStatus());
-                        ifViewAttached(true, new ViewAction<Home.View>() {
-                            @Override
-                            public void run(@NonNull Home.View view) {
-                                view.setData(journeyDataResponse.body());
-                            }
-                        });
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable journeyDataThrowable) throws Exception {
-                        Log.e("TAG", "journeyDataThrowable==" + journeyDataThrowable.getMessage());
-                    }
-                });
+                .subscribe(journeyDataResponse -> {
+                    Log.e("TAG", "journeyDataResponse==" + journeyDataResponse.body().getStatus());
+                    ifViewAttached(true, view -> view.setData(journeyDataResponse.body()));
+                }, journeyDataThrowable -> Log.e("TAG", "journeyDataThrowable==" + journeyDataThrowable.getMessage()));
     }
 }

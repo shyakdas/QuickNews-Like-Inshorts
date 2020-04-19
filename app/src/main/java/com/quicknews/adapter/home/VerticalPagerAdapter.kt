@@ -1,4 +1,4 @@
-package com.quicknews.adapter
+package com.quicknews.adapter.home
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -13,6 +13,10 @@ import com.quicknews.model.ArticleData
 import kotlinx.android.synthetic.main.item_channel_news.view.*
 import java.util.*
 
+/**
+ * VerticalPagerAdapter(context, listOfData, listener), this class is responsible to create a
+ * swipe recycle View as like (InShorts), For this we have implemented PagerAdapter with a View Pager.
+ */
 
 class VerticalPagerAdapter(var context: Context, var mTotalList: ArrayList<ArticleData>,
                            var listener: ItemClickListener) : PagerAdapter() {
@@ -32,16 +36,29 @@ class VerticalPagerAdapter(var context: Context, var mTotalList: ArrayList<Artic
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): View {
+        // Inflate the item view here
         val itemView = mLayoutInflater?.inflate(R.layout.item_channel_news, container, false)
+        setView(itemView, position, container)
+        return itemView!!
+    }
+
+    /**
+     * setView(itemView, position,Your Container)
+     * This method, will set the data into the view;
+     */
+    private fun setView(itemView: View?, position: Int, container: ViewGroup) {
         itemView?.news_description?.text = mTotalList[position].description
-        itemView?.news_text?.text=mTotalList[position].content
+        itemView?.news_text?.text = mTotalList[position].content
         Glide.with(context).load(mTotalList[position].urlToImage).centerCrop().into(itemView!!.news_image)
         itemView.news_description?.text = mTotalList[position].title
         container.addView(itemView)
         itemView.news_description?.setOnClickListener { listener.onClick(position, mTotalList[position].url!!) }
-        return itemView
     }
 
+    /**
+     * destroyItem(container,position,object);
+     * To remove view from list, you can call this method
+     */
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView((`object`) as ConstraintLayout)
     }

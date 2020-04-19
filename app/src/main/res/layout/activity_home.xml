@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.quicknews.home.VerticalViewPager
+                <com.quicknews.utils.VerticalViewPager
                     android:id="@+id/verticleViewPager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />

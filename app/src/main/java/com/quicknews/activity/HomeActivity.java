@@ -14,11 +14,11 @@ import androidx.fragment.app.FragmentManager;
 import com.example.iosadview.quicknews.R;
 import com.google.android.material.navigation.NavigationView;
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceActivity;
-import com.quicknews.adapter.VerticalPagerAdapter;
-import com.quicknews.categories.CategoriesFragment;
+import com.quicknews.adapter.home.VerticalPagerAdapter;
+import com.quicknews.fragment.CategoriesFragment;
 import com.quicknews.home.Home;
 import com.quicknews.home.HomePresenter;
-import com.quicknews.home.VerticalViewPager;
+import com.quicknews.utils.VerticalViewPager;
 import com.quicknews.listener.ItemClickListener;
 import com.quicknews.model.ArticleData;
 import com.quicknews.model.BaseResponse;
@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse, Home.View, Home.Presenter>
+public class HomeActivity extends MvpLceActivity<ConstraintLayout, BaseResponse, Home.View, Home.Presenter>
         implements Home.View, ItemClickListener {
 
     private VerticalViewPager verticalViewPager;
@@ -40,7 +40,7 @@ public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mDrawerLayout = findViewById(R.id.drawer_layout);
@@ -100,7 +100,7 @@ public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse,
 
     @Override
     public void onClick(int position, String url) {
-        QuickNewsUtils.Companion.creatorCustomTabs(this, url);
+        QuickNewsUtils.Companion.openUrlInCustomTab(this, url);
     }
 
     @Override

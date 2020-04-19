@@ -1,4 +1,4 @@
-package com.quicknews.categories;
+package com.quicknews.adapter.category;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -1,5 +1,8 @@
 package com.quicknews.utils
 
+/**
+ * QuickNewsConstant() will contain all the constant name for Quick News Application
+ */
 class QuickNewsConstant {
     companion object {
         const val COUNTRY = "country"

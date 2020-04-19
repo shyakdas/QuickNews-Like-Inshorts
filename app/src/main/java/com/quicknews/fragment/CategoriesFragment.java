@@ -1,4 +1,4 @@
-package com.quicknews.categories;
+package com.quicknews.fragment;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iosadview.quicknews.R;
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceFragment;
+import com.quicknews.adapter.category.ChannelAdapter;
+import com.quicknews.categories.Channel;
+import com.quicknews.categories.ChannelPresenter;
 import com.quicknews.model.ArticleData;
 import com.quicknews.model.BaseResponse;
 

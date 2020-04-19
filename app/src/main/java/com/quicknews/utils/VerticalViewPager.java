@@ -1,4 +1,4 @@
-package com.quicknews.home;
+package com.quicknews.utils;
 
 import android.content.Context;
 import android.util.AttributeSet;

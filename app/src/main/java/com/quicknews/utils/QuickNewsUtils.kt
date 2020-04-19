@@ -5,7 +5,6 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.net.Uri
 import android.os.Build
-import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.graphics.drawable.DrawableCompat
@@ -13,10 +12,19 @@ import com.example.iosadview.quicknews.R
 import saschpe.android.customtabs.CustomTabsHelper
 import saschpe.android.customtabs.WebViewFallback
 
+/**
+ * QuickNewsUtils class will contain all the common methods of QuickNews Applications.
+ */
+
 class QuickNewsUtils {
 
     companion object {
-        fun creatorCustomTabs(activity: Activity, URL: String?) {
+
+        /**
+         * openUrlInCustomTab(passYourActivity, String Url), this is a custom tab helper method,
+         * By this we can open any URL of the application
+         */
+        fun openUrlInCustomTab(activity: Activity, URL: String?) {
             val customTabsIntent = getDefaultCustomTabsIntentBuilder(activity)
                     .setStartAnimations(activity, R.anim.enter_from_right, R.anim.exit_to_left)
                     .setExitAnimations(activity, R.anim.enter_from_left, R.anim.exit_to_right)
@@ -28,8 +36,13 @@ class QuickNewsUtils {
                     WebViewFallback())
         }
 
+        /**
+         * getDefaultCustomTabsIntentBuilder(activity), will handle the toolbar function,
+         * like, setting the tool bar title and tool bar color.
+         */
+
         private fun getDefaultCustomTabsIntentBuilder(activity: Activity): CustomTabsIntent.Builder {
-            val backArrow = getBitmapFromVectorDrawable(R.drawable.ic_arrow_back_white, activity)
+            val backArrow = getBitmapFromVectorDrawable(activity)
             return CustomTabsIntent.Builder()
                     .addDefaultShareMenuItem()
                     .setToolbarColor(activity.resources.getColor(R.color.colorPrimary))
@@ -37,8 +50,13 @@ class QuickNewsUtils {
                     .setCloseButtonIcon(backArrow!!)
         }
 
-        private fun getBitmapFromVectorDrawable(@DrawableRes drawableId: Int, activity: Activity?): Bitmap? {
-            var drawable = AppCompatResources.getDrawable(activity!!, drawableId)
+        /**
+         * getBitmapFromVectorDrawable(activity), to set back button or any icons in custom tab,
+         * use this method to set.
+         */
+
+        private fun getBitmapFromVectorDrawable(activity: Activity?): Bitmap? {
+            var drawable = AppCompatResources.getDrawable(activity!!, R.drawable.ic_arrow_back_white)
                     ?: return null
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
                 drawable = DrawableCompat.wrap(drawable).mutate()

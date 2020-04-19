@@ -8,11 +8,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
-import com.quicknews.listener.PostItemClickListener;
 import com.example.iosadview.quicknews.R;
+import com.quicknews.listener.ItemClickListener;
 import com.quicknews.model.ArticleData;
 
 import java.util.ArrayList;
@@ -24,10 +25,10 @@ class VerticlePagerAdapter extends PagerAdapter {
     private ArrayList<ArticleData> mList;
     private TextView label, title;
     private ImageView imageView;
-    private PostItemClickListener postItemClickListener;
+    private ItemClickListener postItemClickListener;
 
     public VerticlePagerAdapter(Context context, ArrayList<ArticleData> mTotalList,
-                                PostItemClickListener listener) {
+                                ItemClickListener listener) {
         mContext = context;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mList = mTotalList;
@@ -40,12 +41,12 @@ class VerticlePagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return view == (object);
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, final int position) {
+    public Object instantiateItem(@NonNull ViewGroup container, final int position) {
         View itemView = mLayoutInflater.inflate(R.layout.item_channel_news, container, false);
         label = itemView.findViewById(R.id.textView);
         imageView = itemView.findViewById(R.id.imageView);
@@ -57,7 +58,7 @@ class VerticlePagerAdapter extends PagerAdapter {
         title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                postItemClickListener.postClick(position, mList.get(position).getUrl());
+                postItemClickListener.onClick(position, mList.get(position).getUrl());
             }
         });
         return itemView;

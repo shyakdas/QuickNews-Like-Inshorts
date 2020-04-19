@@ -12,8 +12,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
-import com.quicknews.listener.PostItemClickListener;
 import com.example.iosadview.quicknews.R;
+import com.quicknews.listener.ItemClickListener;
 import com.quicknews.model.ArticleData;
 import com.quicknews.model.BaseResponse;
 import com.quicknews.utils.AppUtis;
@@ -27,7 +27,7 @@ import java.util.List;
 import static com.quicknews.utils.Constant.TAG_MASTER_FRAGMENT;
 
 public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse, Home.View, Home.Presenter>
-        implements Home.View, PostItemClickListener {
+        implements Home.View, ItemClickListener {
 
     private VerticalViewPager verticalViewPager;
     private VerticlePagerAdapter verticlePagerAdapter;
@@ -98,7 +98,7 @@ public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse,
     }
 
     @Override
-    public void postClick(int position, String url) {
+    public void onClick(int position, String url) {
         Log.e("TAG", "checkingTheClick===" + position + "url====" + url);
         AppUtis.creatorCustomTabs(this, url);
     }

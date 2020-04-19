@@ -1,4 +1,4 @@
-package com.quicknews.home;
+package com.quicknews.activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,7 +14,11 @@ import androidx.fragment.app.FragmentManager;
 import com.example.iosadview.quicknews.R;
 import com.google.android.material.navigation.NavigationView;
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceActivity;
+import com.quicknews.adapter.VerticalPagerAdapter;
 import com.quicknews.categories.CategoriesFragment;
+import com.quicknews.home.Home;
+import com.quicknews.home.HomePresenter;
+import com.quicknews.home.VerticalViewPager;
 import com.quicknews.listener.ItemClickListener;
 import com.quicknews.model.ArticleData;
 import com.quicknews.model.BaseResponse;
@@ -29,7 +33,7 @@ public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse,
         implements Home.View, ItemClickListener {
 
     private VerticalViewPager verticalViewPager;
-    private VerticlePagerAdapter verticlePagerAdapter;
+    private VerticalPagerAdapter verticlePagerAdapter;
     private ArrayList<ArticleData> mTotoalList;
     private DrawerLayout mDrawerLayout;
 
@@ -59,7 +63,7 @@ public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse,
 
         mTotoalList = new ArrayList<>();
         verticalViewPager = findViewById(R.id.verticleViewPager);
-        verticlePagerAdapter = new VerticlePagerAdapter(this, mTotoalList, this);
+        verticlePagerAdapter = new VerticalPagerAdapter(this, mTotoalList, this);
         loadData(false);
     }
 

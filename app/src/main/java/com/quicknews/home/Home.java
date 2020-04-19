@@ -1,8 +1,8 @@
 package com.quicknews.home;
 
-import com.quicknews.model.BaseResponse;
 import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView;
+import com.quicknews.model.BaseResponse;
 
 public interface Home {
 

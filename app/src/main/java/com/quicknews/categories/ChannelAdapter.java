@@ -12,16 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.iosadview.quicknews.R;
-import com.quicknews.model.BaseResponse;
+import com.quicknews.model.ArticleData;
 
 import java.util.ArrayList;
 
 public class ChannelAdapter extends RecyclerView.Adapter<ChannelAdapter.ChannelViewHolder> {
 
     private Context mContext;
-    private ArrayList<BaseResponse.Article> mChannelList;
+    private ArrayList<ArticleData> mChannelList;
 
-    public ChannelAdapter(Context context, ArrayList<BaseResponse.Article> channellist) {
+    public ChannelAdapter(Context context, ArrayList<ArticleData> channellist) {
         this.mContext = context;
         this.mChannelList = channellist;
     }

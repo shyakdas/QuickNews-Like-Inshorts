@@ -12,25 +12,26 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
-import com.quicknews.Interface.PostItemClickListener;
+import com.quicknews.listener.PostItemClickListener;
 import com.example.iosadview.quicknews.R;
-import com.quicknews.Utils.AppUtis;
-import com.quicknews.categories.CategoriesFragment;
+import com.quicknews.model.ArticleData;
 import com.quicknews.model.BaseResponse;
+import com.quicknews.utils.AppUtis;
+import com.quicknews.categories.CategoriesFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.quicknews.Utils.Constant.TAG_MASTER_FRAGMENT;
+import static com.quicknews.utils.Constant.TAG_MASTER_FRAGMENT;
 
 public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse, Home.View, Home.Presenter>
         implements Home.View, PostItemClickListener {
 
     private VerticalViewPager verticalViewPager;
     private VerticlePagerAdapter verticlePagerAdapter;
-    private ArrayList<BaseResponse.Article> mTotoalList;
+    private ArrayList<ArticleData> mTotoalList;
     private DrawerLayout mDrawerLayout;
 
     @Override
@@ -89,7 +90,7 @@ public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse,
         presenter.getJournalData();
     }
 
-    public void addAll(List<BaseResponse.Article> categories) {
+    public void addAll(List<ArticleData> categories) {
         this.mTotoalList.addAll(categories);
         Log.e("TAG", "listSize==" + mTotoalList.size());
         verticlePagerAdapter.notifyDataSetChanged();

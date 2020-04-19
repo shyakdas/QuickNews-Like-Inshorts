@@ -14,8 +14,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iosadview.quicknews.R;
-import com.quicknews.model.BaseResponse;
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceFragment;
+import com.quicknews.model.ArticleData;
+import com.quicknews.model.BaseResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class CategoriesFragment extends MvpLceFragment<RelativeLayout, BaseRespo
     private RecyclerView mRecylerview;
     private ChannelAdapter channelAdapter;
     private RecyclerView.LayoutManager linearLayoutManager;
-    private ArrayList<BaseResponse.Article> mList;
+    private ArrayList<ArticleData> mList;
 
     @Nullable
     @Override
@@ -73,7 +74,7 @@ public class CategoriesFragment extends MvpLceFragment<RelativeLayout, BaseRespo
         presenter.fetchBuisnessCategorisData();
     }
 
-    public void addAll(List<BaseResponse.Article> categories) {
+    public void addAll(List<ArticleData> categories) {
         this.mList.addAll(categories);
         Log.e("TAG", "listSize==" + mList.size());
         channelAdapter.notifyDataSetChanged();

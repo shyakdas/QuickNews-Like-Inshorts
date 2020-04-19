@@ -11,9 +11,9 @@ import android.widget.TextView;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
-import com.quicknews.Interface.PostItemClickListener;
+import com.quicknews.listener.PostItemClickListener;
 import com.example.iosadview.quicknews.R;
-import com.quicknews.model.BaseResponse;
+import com.quicknews.model.ArticleData;
 
 import java.util.ArrayList;
 
@@ -21,12 +21,12 @@ class VerticlePagerAdapter extends PagerAdapter {
 
     private Context mContext;
     private LayoutInflater mLayoutInflater;
-    private ArrayList<BaseResponse.Article> mList;
+    private ArrayList<ArticleData> mList;
     private TextView label, title;
     private ImageView imageView;
     private PostItemClickListener postItemClickListener;
 
-    public VerticlePagerAdapter(Context context, ArrayList<BaseResponse.Article> mTotalList,
+    public VerticlePagerAdapter(Context context, ArrayList<ArticleData> mTotalList,
                                 PostItemClickListener listener) {
         mContext = context;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

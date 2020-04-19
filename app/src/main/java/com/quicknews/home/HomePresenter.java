@@ -5,8 +5,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.quicknews.Utils.Constant;
 import com.quicknews.model.BaseResponse;
+import com.quicknews.utils.Constant;
 import com.quicknews.network.APIUtils;
 import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter;
 

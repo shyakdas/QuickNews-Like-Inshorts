@@ -1,4 +1,4 @@
-package com.quicknews.Utils;
+package com.quicknews.utils;
 
 public class Constant {
 

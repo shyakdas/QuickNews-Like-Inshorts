@@ -1,4 +1,4 @@
-package com.quicknews.Interface;
+package com.quicknews.listener;
 
 public interface PostItemClickListener {
 

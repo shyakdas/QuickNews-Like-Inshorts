@@ -15,7 +15,7 @@ This open-source project is for you(community). I have taken this initiative to 
 
 ### Building the project
 * Clone the project, the master branch has the latest code.
-* This App uses the NewApi, API Key for News. Get the API key from the News API console for your project. Refer this link. And put that key in the local.properties file in your project: Your local.properties will like below:
+* This App uses the NewApi, API Key for News. Get the API key from the News API console for your project. Refer this [link](https://newsapi.org/). And put that key in the local.properties file in your project: Your local.properties will like below:
 ```
 apiKey = YOUR_API_KEY
 ```

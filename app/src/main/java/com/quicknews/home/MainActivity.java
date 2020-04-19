@@ -1,7 +1,6 @@
 package com.quicknews.home;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -13,18 +12,18 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.iosadview.quicknews.R;
+import com.google.android.material.navigation.NavigationView;
+import com.hannesdorfmann.mosby3.mvp.lce.MvpLceActivity;
+import com.quicknews.categories.CategoriesFragment;
 import com.quicknews.listener.ItemClickListener;
 import com.quicknews.model.ArticleData;
 import com.quicknews.model.BaseResponse;
-import com.quicknews.utils.AppUtis;
-import com.quicknews.categories.CategoriesFragment;
-import com.google.android.material.navigation.NavigationView;
-import com.hannesdorfmann.mosby3.mvp.lce.MvpLceActivity;
+import com.quicknews.utils.QuickNewsConstant;
+import com.quicknews.utils.QuickNewsUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.quicknews.utils.Constant.TAG_MASTER_FRAGMENT;
 
 public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse, Home.View, Home.Presenter>
         implements Home.View, ItemClickListener {
@@ -55,7 +54,7 @@ public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse,
         CategoriesFragment categoriesFragment = CategoriesFragment.newInstance();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .add(R.id.master_fragment_container, categoriesFragment, TAG_MASTER_FRAGMENT)
+                .add(R.id.master_fragment_container, categoriesFragment, QuickNewsConstant.TAG_MASTER_FRAGMENT)
                 .commit();
 
         mTotoalList = new ArrayList<>();
@@ -77,7 +76,6 @@ public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse,
 
     @Override
     public void setData(BaseResponse data) {
-        Log.e("TAG", "setDataCheck==" + data.getArticles().get(2).getUrlToImage());
         addAll(data.getArticles());
     }
 
@@ -92,15 +90,13 @@ public class MainActivity extends MvpLceActivity<ConstraintLayout, BaseResponse,
 
     public void addAll(List<ArticleData> categories) {
         this.mTotoalList.addAll(categories);
-        Log.e("TAG", "listSize==" + mTotoalList.size());
         verticlePagerAdapter.notifyDataSetChanged();
         verticalViewPager.setAdapter(verticlePagerAdapter);
     }
 
     @Override
     public void onClick(int position, String url) {
-        Log.e("TAG", "checkingTheClick===" + position + "url====" + url);
-        AppUtis.creatorCustomTabs(this, url);
+        QuickNewsUtils.Companion.creatorCustomTabs(this, url);
     }
 
     @Override

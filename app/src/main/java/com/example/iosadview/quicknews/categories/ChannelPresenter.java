@@ -1,8 +1,9 @@
 package com.example.iosadview.quicknews.categories;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import com.example.iosadview.quicknews.Utils.Constant;
 import com.example.iosadview.quicknews.model.BaseResponse;

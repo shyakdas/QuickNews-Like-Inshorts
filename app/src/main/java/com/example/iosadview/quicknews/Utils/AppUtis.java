@@ -6,10 +6,11 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
-import android.support.annotation.DrawableRes;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.graphics.drawable.DrawableCompat;
-import android.support.v7.content.res.AppCompatResources;
+
+import androidx.annotation.DrawableRes;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.example.iosadview.quicknews.R;
 

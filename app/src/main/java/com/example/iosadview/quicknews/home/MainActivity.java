@@ -1,22 +1,23 @@
 package com.example.iosadview.quicknews.home;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.iosadview.quicknews.Interface.PostItemClickListener;
 import com.example.iosadview.quicknews.R;
 import com.example.iosadview.quicknews.Utils.AppUtis;
 import com.example.iosadview.quicknews.categories.CategoriesFragment;
 import com.example.iosadview.quicknews.model.BaseResponse;
+import com.google.android.material.navigation.NavigationView;
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceActivity;
 
 import java.util.ArrayList;

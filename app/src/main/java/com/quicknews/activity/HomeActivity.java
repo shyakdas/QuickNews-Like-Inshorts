@@ -99,7 +99,7 @@ public class HomeActivity extends MvpLceActivity<ConstraintLayout, BaseResponse,
     }
 
     @Override
-    public void onClick(int position, String url) {
+    public void onClick(int position, @NonNull String url) {
         QuickNewsUtils.Companion.openUrlInCustomTab(this, url);
     }
 

@@ -1,3 +1,8 @@
+# Warning! Quick News is no longer maintained.
+
+# Check my new news application with Jetpack Compose https://github.com/shyakdas/Jet-News
+
+
 # Quick News like Inshort Android App
 
 Learn to build a Inshorts-60 words clone Application  - Open-Source Project By Shyak Das
